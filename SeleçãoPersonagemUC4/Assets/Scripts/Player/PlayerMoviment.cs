@@ -15,9 +15,14 @@ public class PlayerMoviment : MonoBehaviour
     [SerializeField] private float jumpForce;
     public SpriteRenderer spriteRenderer;
     public Animator animator;
+    public Animator profAnimation;
+
+    //Tornar em lista
     public AnimatorController graziAnimation;
     public AnimatorController mattAnimation;
     public AnimatorController mellyAnimation;
+
+    //Tornar em lista
     public Sprite graziSpriteStopped;
     public Sprite mattSpriteStopped;
     public Sprite mellySpriteStopped;
@@ -31,6 +36,8 @@ public class PlayerMoviment : MonoBehaviour
     private int contKey = 0;
     private int contControl = 0;
     private int life = 3;
+
+    //Tornar em lista
     public GameObject heart1;
     public GameObject heart2;
     public GameObject heart3;
@@ -43,15 +50,20 @@ public class PlayerMoviment : MonoBehaviour
 
     public GameObject completedLevel;
     public DoorsManager doorsManager;
+
+    //Tornar em lista
     public GameObject key1;
     public GameObject key2;
     public GameObject key3;
     public GameObject key4;
+
+    //Tornar em lista
     public GameObject control1;
     public GameObject control2;
     public GameObject control3;
     public GameObject control4;
     public GameObject control5;
+
     public GameObject teacher;
 
 
@@ -168,7 +180,9 @@ public class PlayerMoviment : MonoBehaviour
         if (collision.gameObject.CompareTag("Prof"))
         {
             DisableInput();
+            profAnimation.enabled = true;
             completedLevel.SetActive(true);
+
         }
 
         if (collision.gameObject.CompareTag("Set"))
@@ -241,6 +255,7 @@ public class PlayerMoviment : MonoBehaviour
             else if (contControl == 5)
             {
                 teacher.SetActive(true);
+                profAnimation.enabled = false;
                 Destroy(collision.gameObject);
                 control5.GetComponent<SpriteRenderer>().color = collision.gameObject.GetComponent<SpriteRenderer>().color;
             }
